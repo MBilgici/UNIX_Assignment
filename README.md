@@ -38,8 +38,8 @@ grep -E 'ZMPBA|ZMPIL|ZMPJA' transposed_genotypes.txt > teosinte_genotypes.txt
 sort -k1,1 maize_genotypes.txt > sorted_maize.txt
 sort -k1,1 teosinte_genotypes.txt > sorted_teosinte.txt
 sort -k1,1 snp_position.txt > sorted_snp_position.txt
-join -1 1 -2 1 sorted_maize.txt sorted_snp_position.txt > joined_maize.txt
-join -1 1 -2 1 sorted_teosinte.txt sorted_snp_position.txt > joined_teosinte.txt
+join -1 1 -2 1 -t $'\t' sorted_maize.txt sorted_snp_position.txt > joined_maize.txt
+join -1 1 -2 1 -t $'\t' sorted_teosinte.txt sorted_snp_position.txt > joined_teosinte.txt
 awk -v chr="$i" '$2 == chr' joined_maize.txt > maize_chr"$i".txt
 sort -k3,3n maize_chr"$i".txt > maize_chr"$i"_increasing.txt
 sort -k3,3nr maize_chr"$i".txt > maize_chr"$i"_decreasing.txt
